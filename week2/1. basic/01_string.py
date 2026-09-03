@@ -25,21 +25,36 @@
 """
 
 def is_palindrome(s):
+    s = s.lower()
+    chars = []
+    for c in s:
+        if c.isalnum():
+            chars.append(c)
+    s = "".join(chars)
+    left = 0                   
+    right = len(s) - 1          
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left = left + 1      
+        right = right - 1
+    return True
+    
     """
     문자열이 회문인지 판별하는 함수
     
-    Args:
+    Args: 인자(함수에 전달하는 값 함수의 변수로 생각)
         s: 판별할 문자열
     
-    Returns:
+    Returns: 돌려주는 값
         bool: 회문이면 True, 아니면 False
     """
     # TODO: 알파벳과 숫자만 남기고 소문자로 변환하세요
-    # 힌트: isalnum() 메서드와 lower() 메서드 사용
+    # 힌트: isalnum() : 문자가 영문자, 숫자일때 트루를 반환하는 메서드와 lower()대문자를 소문자로 변환하는 메서드
     pass
     
     # TODO: 정제된 문자열이 회문인지 확인하세요
-    # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
+    # 방법1: 문자열을 뒤집어서 비교 ([::-1] 이걸로 문자를 뒤집음)
     # 방법2: 양 끝 인덱스를 이용한 투 포인터 방식
     pass
     

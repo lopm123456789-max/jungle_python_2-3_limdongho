@@ -27,6 +27,13 @@
 from collections import deque
 
 def process_print_queue(jobs):
+    queue = deque(jobs)
+    processed = []
+    while queue :
+        job=queue.popleft()
+        print(f"처리 {job}")
+        processed.append(job)
+    return processed
     """
     프린터 작업을 순서대로 처리
     

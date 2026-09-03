@@ -122,6 +122,13 @@ def combinations(n: int, k: int) -> list:
     result = []  # 완성된 조합을 모아 둘 곳
 
     def backtrack(start: int, current_combination: list) -> None:
+      if len(current_combination)==k :
+        result.append(list(current_combination))
+        return 
+      for num in range(start, n+1):
+        current_combination.append(num)
+        backtrack(num+1, current_combination)
+        current_combination.pop()
         """
         재귀(백트래킹) 헬퍼 함수.
 

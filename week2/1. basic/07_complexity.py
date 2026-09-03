@@ -23,9 +23,17 @@
 """
 
 def find_duplicates_brute_force(nums):
+    duplicates = []
+    n=len(nums)
+    for i in range(n):
+        for j in range(i+1, n):
+            if nums[i] == nums[j] and nums[i] not in duplicates:
+                duplicates.append(nums[i])
+    return duplicates
+        
     """
     방법1: 이중 반복문 사용
-    시간 복잡도: O(n²)
+    시간 복잡도 O(:n²)
     공간 복잡도: O(k) - k는 중복 원소 개수
     """
     duplicates = []
@@ -39,6 +47,16 @@ def find_duplicates_brute_force(nums):
     return duplicates
 
 def find_duplicates_sorting(nums):
+    if not nums:
+        return[]
+    nums.sort()
+    duplicates=[]
+    n=len(nums)
+    for i in range(n-1):
+        if nums[i] == nums[i+1] and nums[i] not in duplicates:
+            duplicates.append(nums[i])
+    return duplicates
+        
     """
     방법2: 정렬 후 인접 원소 비교
     시간 복잡도: O(n log n) - 정렬
@@ -59,6 +77,14 @@ def find_duplicates_sorting(nums):
     return duplicates
 
 def find_duplicates_hash(nums):
+    seen = set()
+    duplicates = set()
+    for num in nums:
+        if num in seen:
+            duplicates.add(num)
+        else:
+            seen.add(num)
+    return list(duplicates)
     """
     방법3: 해시 집합 사용
     시간 복잡도: O(n)
