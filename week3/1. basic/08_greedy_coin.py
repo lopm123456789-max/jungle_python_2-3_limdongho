@@ -30,24 +30,13 @@
 """
 
 def make_change_greedy(change, coins):
-    """
-    그리디 알고리즘으로 거스름돈 계산
-    
-    Args:
-        change: 거슬러줄 금액
-        coins: 동전 종류 리스트 (큰 순서)
-    
-    Returns:
-        (총 개수, {동전: 개수} 딕셔너리)
-    """
-    result = {}
-    total_coins = 0
-    
-    # TODO: 각 동전에 대해 반복
-    ## 현재 동전으로 거슬러줄 수 있는 개수 계산    
-    ## 개수가 0보다 크면 결과에 추가
-    pass
-    
+    result={}
+    total_coins=0
+    for i in range(len(coins)):
+        count = change//coins[i]
+        change = (change-(count*coins[i]))
+        result[coins[i]] = count
+        total_coins += count
     return total_coins, result
 
 # 테스트 케이스
